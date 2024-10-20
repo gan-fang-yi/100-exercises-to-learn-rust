@@ -31,7 +31,7 @@ impl Ticket {
         if description.len() > 500 {
             panic!("Description cannot be longer than 500 bytes");
         }
-        if !status.contains("To-Do") & !status.contains("In Progress") & !status.contains("Done") {
+        if !status.contains("To-Do") && !status.contains("In Progress") && !status.contains("Done") {
             panic!("Only `To-Do`, `In Progress`, and `Done` statuses are allowed");
         }
 
