@@ -1,4 +1,5 @@
 pub mod ticket {
+    #[allow(dead_code)]
     pub struct Ticket {
         title: String,
         description: String,
@@ -34,6 +35,19 @@ pub mod ticket {
         //  - `title` that returns the `title` field.
         //  - `description` that returns the `description` field.
         //  - `status` that returns the `status` field.
+        #[allow(dead_code)]
+        pub(super) fn title(&self) -> String {
+            self.title.clone()
+        }
+        #[allow(dead_code)]
+        pub(super) fn description(&self) -> String {
+            self.description.clone()
+        }
+        #[allow(dead_code)]
+        pub(super) fn status(&self) -> String {
+            self.status.clone()
+        }
+
     }
 }
 

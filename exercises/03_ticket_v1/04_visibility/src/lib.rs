@@ -1,12 +1,14 @@
 mod ticket {
-    pub(super) struct Ticket {
+    #[allow(dead_code)]
+    pub(crate) struct Ticket {
         title: String,
         description: String,
         status: String,
     }
 
     impl Ticket {
-        pub(super) fn new(title: String, description: String, status: String) -> Ticket {
+        #[allow(dead_code)]
+        pub(crate) fn new(title: String, description: String, status: String) -> Ticket {
             if title.is_empty() {
                 panic!("Title cannot be empty");
             }
@@ -45,7 +47,7 @@ mod tests {
     // Once you have verified that it indeed doesn't compile, comment it out.
     #[test]
     fn should_not_be_possible() {
-        let ticket = Ticket::new("A title".into(), "A description".into(), "To-Do".into());
+        let _ticket = Ticket::new("A title".into(), "A description".into(), "To-Do".into());
 
         // You should be seeing this error when trying to run this exercise:
         //
@@ -59,6 +61,7 @@ mod tests {
         // assert_eq!(ticket.description, "A description");
     }
 
+    #[test]
     fn encapsulation_cannot_be_violated() {
         // This should be impossible as well, with a similar error as the one encountered above.
         // (It will throw a compilation error only after you have commented the faulty line
@@ -69,10 +72,10 @@ mod tests {
         //
         // TODO: Once you have verified that the below does not compile,
         //   comment the lines out to move on to the next exercise!
-        let ticket = Ticket {
+/*         let ticket = Ticket {
             title: "A title".into(),
             description: "A description".into(),
             status: "To-Do".into(),
-        };
+        }; */
     }
 }
