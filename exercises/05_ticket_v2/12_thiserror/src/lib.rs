@@ -3,13 +3,21 @@
 //   a `String` field into each variant.
 //   You'll also have to add `thiserror` as a dependency in the `Cargo.toml` file.
 
+
+#[allow(dead_code)]
+#[derive(thiserror::Error, Debug)]
 enum TicketNewError {
+    #[error("Title cannot be empty")]
     TitleCannotBeEmpty,
+    #[error("Title cannot be longer than 50 bytes")]
     TitleTooLong,
+    #[error("Description cannot be empty")]
     DescriptionCannotBeEmpty,
+    #[error("Description cannot be longer than 500 bytes")]
     DescriptionTooLong,
 }
 
+#[allow(dead_code)]
 #[derive(Debug, PartialEq, Clone)]
 struct Ticket {
     title: String,
@@ -17,6 +25,7 @@ struct Ticket {
     status: Status,
 }
 
+#[allow(dead_code)]
 #[derive(Debug, PartialEq, Clone)]
 enum Status {
     ToDo,
@@ -24,6 +33,7 @@ enum Status {
     Done,
 }
 
+#[allow(dead_code)]
 impl Ticket {
     pub fn new(
         title: String,

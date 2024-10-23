@@ -1,14 +1,20 @@
+#[allow(dead_code)]
 enum Shape {
     Circle { radius: f64 },
     Square { border: f64 },
     Rectangle { width: f64, height: f64 },
 }
 
+#[allow(dead_code)]
 impl Shape {
     // TODO: Implement the `radius` method using
     //  either an `if let` or a `let/else`.
     pub fn radius(&self) -> f64 {
-        todo!()
+        let Shape::Circle { radius } = self else {
+            panic!("Don't exit");
+        };
+
+        *radius
     }
 }
 
