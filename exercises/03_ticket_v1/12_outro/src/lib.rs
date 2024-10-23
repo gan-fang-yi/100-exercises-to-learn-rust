@@ -11,3 +11,76 @@
 // Integration here has a very specific meaning: they test **the public API** of your project.
 // You'll need to pay attention to the visibility of your types and methods; integration
 // tests can't access private or `pub(crate)` items.
+
+pub struct Order {
+    product_name: String,
+    quantity: i32,
+    unit_price: i32,
+}
+
+impl Order {
+    pub fn new(product_name: String, quantity: i32, unit_price: i32) -> Order {
+        check_product_name(&product_name);
+        check_quantity(quantity);
+        check_unit_price(unit_price);
+
+        Order {
+            product_name,
+            quantity,
+            unit_price,
+        }
+    }
+
+    pub fn total(&self) -> i32 {
+        self.quantity * self.unit_price
+    }
+
+    pub fn product_name(&self) -> &String {
+        &self.product_name
+    }
+
+    pub fn set_product_name(&mut self, product_name: String) {
+        check_product_name(&product_name);
+        self.product_name = product_name;
+    }
+
+    pub fn quantity(&self) -> &i32 {
+        &self.quantity
+    }
+
+    pub fn set_quantity(&mut self, quantity: i32) {
+        check_quantity(quantity);
+        self.quantity = quantity;
+    }
+
+    pub fn unit_price(&self) -> &i32 {
+        &self.unit_price
+    }
+
+    pub fn set_unit_price(&mut self, unit_price: i32) {
+        check_quantity(unit_price);
+        self.unit_price = unit_price;
+    }
+
+}
+
+fn check_product_name(product_name: &String) {
+    if product_name.is_empty() {
+        panic!("product name should not be empty");
+    }
+    if product_name.len() > 300 {
+        panic!("the length of product name should not be larger than 300");
+    }
+}
+
+fn check_quantity(quantity: i32) {
+    if quantity <= 0 {
+        panic!("quantity should be bigger than 0");
+    }
+}
+
+fn check_unit_price(price: i32) {
+    if price <= 0 {
+        panic!("price should be bigger than 0")
+    }
+}
